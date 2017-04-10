@@ -1,0 +1,8 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sample-app
+spec:
+  backend:
+    serviceName: sample-app-frontend
+    servicePort: 80

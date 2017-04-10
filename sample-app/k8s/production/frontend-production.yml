@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sample-app-frontend-production
+spec:
+  replicas:
+  template:
+    metadata:
+      name: frontend
+      labels:
+        app: sample-app
+        role: frontend
+        env: production
+    spec:
+      containers:
+      - name: frontend
+        image: gcr.io/sample-app-images/gceme:1.0.0
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "100m"
+        readinessProbe:
+          httpGet:
+            path: /health/
+            port: 80
+        ports:
+        - name: frontend
+          containerPort: 80

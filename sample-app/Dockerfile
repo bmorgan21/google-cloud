@@ -12,13 +12,12 @@ WORKDIR ${CODE_DIR}
 RUN apt-get update
 
 # Install Python and Basic Python Tools
-RUN apt-get install -y --no-install-recommends curl python
-
-RUN curl -k https://bootstrap.pypa.io/get-pip.py > get-pip.py && python get-pip.py
+RUN apt-get install -y --no-install-recommends python-all python-setuptools python-pip
+RUN pip install --upgrade pip
 
 COPY requirements.txt ${CODE_DIR}/requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . ${CODE_DIR}
 
-CMD python hello.py
+CMD ["python", "hello.py"]
