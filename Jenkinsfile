@@ -6,6 +6,8 @@ node {
 
   checkout scm
 
+  sh("cd sample-app")
+
   stage 'Build image'
   sh("docker build -t ${imageTag} .")
 
