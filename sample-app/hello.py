@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello World! {}".format(datetime.utcnow())
+    return "Hello World! {}".format(datetime.datetime.utcnow())
 
 
 @app.route("/health/")
